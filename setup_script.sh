@@ -1,9 +1,9 @@
 #!/bin/bash
-VERSION=0.00.1
+VERSION=0.00.2
 #source ~/.bashrc
 #source ~/.zshrc
 
-source /home/dsondermann/git/repository/scripts/function_library/global_functions
+source $HOME/git/repository/scripts/function_library/global_functions
 
 echo_info "This is VERSION: $VERSION of $0"
 
@@ -36,13 +36,16 @@ exit 0
 
 
 PS3='Please enter your choice: '
-options=("Install git" "Ping Website" "Option 3" "QUIT")
+options=("Install git" "Setup git" "Ping Website" "Option 3" "QUIT")
 select opt in "${options[@]}"
 do
 	case $opt in
 		"Install git")
 			install_git
 			;;
+		"Setup git")
+			setup_git
+			;;	
 		"Ping Website")
 			ping_website
             		;;
