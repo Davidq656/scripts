@@ -119,6 +119,11 @@ function install_btop_raspbian(){
   echo_info "Determining if system is running raspbian"
   if cat /etc/apt/sources.list.d/raspi.list | grep -q "raspberrypi"; then
     echo_ok "System using raspbian, continuing"
+    echo_info "Installing btop"
+    wget -qO btop.tbz https://github.com/aristocratos/btop/releases/latest/download/btop-armv7l-linux-musleabihf.tbz
+  sudo tar xf btop.tbz -C /usr/local bin/btop && rm -rf btop.tbz &&
+  echo_ok "btop installed"
+  
   else
     echo_error "System is not using raspbian, aborting!"
   fi
