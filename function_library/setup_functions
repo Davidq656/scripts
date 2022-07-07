@@ -107,3 +107,19 @@ function init_git_home(){
    mkdir -p $HOME/git/repository &&
   echo_ok "User directory for $USER initialized"
 }
+
+function set_git_editor(){
+  echo_info "Setting vim as the default git editor"
+  git config --global core.editor "vim"
+  echo_ok "vim is now the new default editor for git"
+}
+
+function install_btop_raspbian(){
+  echo_info "Installing btop on raspbian devices"
+  echo_info "Determining if system is running raspbian"
+  if cat /etc/apt/sources.list.d/raspi.list | grep -q "raspberrypi"; then
+    echo_ok "System using raspbian, continuing"
+  else
+    echo_error "System is not using raspbian, aborting!"
+  fi
+}
