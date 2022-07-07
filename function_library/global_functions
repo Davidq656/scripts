@@ -1,5 +1,6 @@
+#important global functions that can be used in every script
 
-#colors
+#COLOR-DEFINITION
 NOCOLOR='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -18,7 +19,7 @@ LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
 
 
-#global functons
+#GLOBAL-FUNCTIONS
 function echo_error(){
 echo -e "${RED}$1"
 res
