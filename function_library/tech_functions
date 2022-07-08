@@ -48,3 +48,15 @@ function all_checks() {
 	tcp_check
 	kernel_check
 }
+
+function temperature_check(){
+temp_crit=45
+  echo_info "Checking current CPU temperature"
+ # TEMP=$(vcgencmd measure_temp | sed -e 's/temp=//')
+  TEMP=$(vcgencmd measure_temp | sed "s/[^0-9.]//g")
+  if ["$TEMP" -ge "$temp_crit"]; then
+    echo_warning "Temperature at "$TEMP"°C"
+  else
+    echo_error "Temperature at "$TEMP"°C"
+  fi
+}

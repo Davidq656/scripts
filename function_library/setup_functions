@@ -128,3 +128,16 @@ function install_btop_raspbian(){
     echo_error "System is not using raspbian, aborting!"
   fi
 }
+
+function mount_smb_share(){
+  echo_info "Mounting SMB Shares"
+  read -p "IP adress and folder of SMB share:" smbmount ;
+  read -p "usermane:" username ;
+  read -p "mountpoint:" mntpoint ;
+  echo ""
+  echo_ok "$smbmount will be mounted at $mntpoint using $username"
+  echo ""
+  sudo mkdir -p $mntpoint && echo_ok "Mountpoint $mntpoint created"
+  sudo mount -t cifs -o user=$username $smbmount $mntpoint && echo_ok "Mounted"
+}
+
