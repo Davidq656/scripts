@@ -14,6 +14,15 @@ echo_info "adding dependencies"
   echo_ok "Installation done"
 }
 
+function install_git_almalinux(){
+  echo_info "Installing git cli"
+  sudo dnf install git -y && echo_ok "git installed"
+  sudo dnf install 'dnf-command(config-manager)'
+  sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+  echo_info "Installing gh"
+  sudo dnf install gh -y && echo_ok "Installation done"
+}
+
 function ping_website(){
   echo_info "Please enter website to ping (www.example.com)"
   read website
